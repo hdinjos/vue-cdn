@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Condentional</title>
+    <script src="../localy/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="showEl = !showEl">Show Element</button>
+      <p v-if="showEl">saya belajar es6</p>
+      <p v-else>sedang ngoding bukan nulis puisi</p>
+      <p>vuejs adalah framework frontend terkece<p>
+    </div>
+
+    <script>
+      new Vue ({
+        el: "#app",
+        data: {
+          showEl: true
+        }
+      })
+    </script>
+  </body>
+</html>
