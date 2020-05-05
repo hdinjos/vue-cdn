@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Listener</title>
+    <script src="../localy/vue.js"></script>
+  </head>
+  <body>
+    <div id="event">
+      <button @click="increment(2, $event)">Tambah</button>
+      <button @click="counter++">Tambah</button>
+      <p>{{counter}}</p>
+      <p @mousemove="updateCoordinate">
+      Coordinate: {{x}}/{{y}}
+      <span @mousemove.stop>DEAD SPOT FOR MOUSE COORDINATE</span></p>
+      <p>{{counter * 2}}</p>
+      <!--stop is event modifier for mousemove-->
+      <input type="text" @keyup.enter="warnType">
+      <!--event keyboard with modifier key, can chaining the event with its modifier-->
+    </div>
+  <script>
+    new Vue({
+      el: "#event",
+      data: {
+        counter: 0,
+        x: 0,
+        y: 0
+      },
+      methods: {
+        increment(step,event){
+          this.counter += step
+         // this.counter++
+        },
+        updateCoordinate(event){
+          this.x = event.clientX;
+          this.y = event.clientY;
+        },
+        warnType(){
+          alert("JOS!!!")
+        }
+      }
+    });
+  </script>
+  <body>
+</html>
+

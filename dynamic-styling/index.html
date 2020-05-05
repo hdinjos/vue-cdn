@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamic styling</title>
+    <script src="../localy/vue.js"></script>
+    <style>
+      .demo {
+        background-color: #eaeaea;
+        margin: 5px;
+        padding: 2px;
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+      }
+      .red { background-color: red; }
+      .green { background-color: green; }
+      .blue { background-color: blue; }
+    </style>
+  </head>
+  <body>
+    <div id="dynamiccss">
+      <div
+      @click="isRed = !isRed"
+      :class="{red : isRed}"
+      class="demo">1
+      </div>
+      <div
+      @click="isGreen = !isGreen"
+      :class="divClass"
+      class="demo">2 <!-- this binding class with object in computed properties
+      {green : isGreen, red : !isRed} object can same its result if attact direcly in class binding--> 
+      </div>
+      <div
+      @click="isBlue = !isBlue"
+        :class="[color, {blue: isBlue}]"
+      class="demo">3
+      </div>
+      <input type="text" v-model="color">
+      <p>{{isRed}} {{isGreen}}<p>
+    </div>
+
+    <script>
+      new Vue({
+       el: "#dynamiccss",
+       data: {
+          isRed: false,
+          isGreen: false,
+          isBlue: false,
+          color: "green"
+       },
+       computed: {
+          divClass: function(){
+            return {
+              green : this.isGreen,
+              red : !this.isRed
+            }
+          }
+       }
+      });
+    </script>
+  </body>
+</html>

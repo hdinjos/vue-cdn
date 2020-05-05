@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>reactive</title>
+    <script src="../localy/vue.js"></script>
+  </head>
+  <body>
+    <div id="reactive">
+      <input type="text" v-model="name">
+      <!--v-model directive is directive what can binding data twice
+      if you change input value, than name at data properties in vue instance have change too
+      if the name change the pharagraf is change to, pharagraf is element <p> 
+      -->
+      <button @click="counter++">Tambah</button>
+      <button @click="counter--">Kurang</button>
+      <button @click="secondCounter++">Tambah Kedua</button>
+      <p>Counter: {{counter}} - {{output}}</p>
+      <p>Result: {{result()}} - {{secondCounter}}</p>
+    </div>
+  <script>
+    new Vue({
+      el: "#reactive",
+      data: {
+        name: "hendi",
+        counter: 0,
+        secondCounter: 0
+      },
+      methods:{
+        result(){
+          console.log("Method")
+          return this.counter > 5 ? "Greater than" : "Smaller than"
+        }
+      },
+      computed: {
+        output: function(){
+          console.log("Computed")
+          return this.counter > 5 ? "Greater than" : "Smaller than"
+        }
+      }
+    });
+  </script>
+  </body>
+</html>

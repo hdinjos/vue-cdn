@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vue local</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p v-once>{{title}} v-once</p> <!--directive v-once make title stop rendering-->
+      <h2>{{sayHello()}}</h2>
+			<a :href="link">Google</a> 	<!--v-bind:href directive, or :href to binding data in element html-->
+			<hr/>
+			<p v-html="finishlink"></p> <!--v-html directive can make html syntax in text become pure html syntax-->
+			<input type="text" @input="changeTitle">
+		</div>
+	<script>
+		new Vue({
+			el: "#app",
+			data: {
+				title: "Hello World",
+				link: "https://google.com",
+				finishlink: "<a href='https://facebook.com'>Facebook</a>"
+			},
+			methods: {
+				changeTitle(event){
+					this.title = event.target.value;
+				},
+				sayHello(){
+					this.title = "hello";
+					return this.title;
+				}
+			}
+		})
+	</script>
+	</body>
+</html>
+	
+	

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>with binding style</title>
+    <script src="../localy/vue.js"></script>
+    <style>
+      .demo{
+        margin: 5px;
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stylebind">
+      <input type="text" v-model="color">
+      <input type="text" v-model="width"><hr>
+      <div class="demo" :style="{backgroundColor: color}"></div>
+      <div class="demo" :style="myStyle"></div>
+      <div class="demo" :style="[myStyle, {height : width + 'px'}]"></div>
+    </div>
+
+    <script>
+      new Vue({
+       el : "#stylebind",
+         data: {
+         color: "red",
+         width: 100
+       },
+        computed: {
+          myStyle: function(){
+            return {
+              backgroundColor: this.color,
+              width: this.width + "px"
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

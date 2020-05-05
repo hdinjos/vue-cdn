@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>watch other</title>
+    <script src="../localy/vue.js"></script>
+  </head>
+  <body>
+    <div id="watch">
+      <input type="text" v-model="kilometers">
+      <input type="text" v-model="meters">
+      <p>km: {{kilometers}}</p>
+      <p>m: {{meters}}</p>
+    </div>
+    
+    <script>
+      new Vue({
+        el: "#watch",
+        data: {
+          kilometers: 0,
+          meters: 0
+        },
+        watch: {
+          kilometers: function(val){
+            this.kilometers = val;
+            this.meters = val * 1000
+          },
+          meters: function(val){
+            this.kilometers = val/1000;
+            this.meters = val;
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
