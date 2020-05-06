@@ -13,7 +13,9 @@
       <template v-if="showEl">
         <p>Sangat mudah belajar vue</p>
         <p>javascript adalah bahasa pemprograman</p>
-      </template>
+      </template> <!--use it to v-if and v-else directive-->
+      <p v-show="showEl">use v-show to hide/not this element <p>
+      <!--v-show not detach and attach from element but is hiding element, becareful -->
     </div>
 
     <script>
